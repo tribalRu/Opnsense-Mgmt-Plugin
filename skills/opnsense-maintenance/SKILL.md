@@ -101,6 +101,8 @@ The key's owning user must hold the privilege for each endpoint, otherwise the c
 |---|---|---|
 | `core/firmware/info` | GET | Firmware/product information |
 | `core/firmware/check` | POST | Check for updates (does not install) |
+| `core/firmware/status` | POST | Update status after a check |
+| `core/firmware/upgradestatus` | GET | Progress of a running update |
 | `core/system/status` | GET | System status |
 | `core/service/search` | GET | List services and their state |
 | `diagnostics/system/system_information` | GET | Hostname, version, uptime |
@@ -119,7 +121,7 @@ The key's owning user must hold the privilege for each endpoint, otherwise the c
 | `kea/leases/search` | GET | Kea leases |
 | `dnsmasq/leases/search` | GET | Dnsmasq leases |
 
-Notes on naming: the official reference lists newer controllers (diagnostics, interfaces, kea, dnsmasq) in `snake_case` and older ones (firewall filter/alias, firmware) in `camelCase`, and does not say whether both spellings are accepted. Use the spelling from the table; if a call returns 404, retry with the other spelling before concluding the endpoint is gone.
+Notes on naming: the API reference tables (checked against docs.opnsense.org, Nov 2026) list firewall `filter`/`source_nat`/`d_nat` commands as `search_rule`/`get_rule`, while its examples and the usual calls use `searchRule`/`getRule`; `alias` is `search_item`/`get_item`, and `core/firmware` commands are single lowercase words. The reference does not state that both spellings are accepted. Use the spelling from the table above; if a call returns 404, retry with the other spelling before concluding the endpoint is gone.
 
 ## Version notes (26.7)
 
